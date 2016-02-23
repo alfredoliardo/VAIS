@@ -1,1 +1,1 @@
-/home/alfredo/workspace/VAIS/CMakeFiles/VAIS.dir
+/Users/alfredoliardo/Xcode/VAIS/CMakeFiles/VAIS.dir

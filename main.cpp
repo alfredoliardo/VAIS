@@ -4,8 +4,6 @@
 #include <opencv2/features2d.hpp>
 #include <opencv2/core.hpp>
 #include <opencv2/calib3d.hpp>
-#include <opencv2/nonfree/nonfree.hpp>
-#include <opencv2/nonfree/features2d.hpp>
 // This video stablisation smooths the global trajectory using a sliding average window
 
 const int SMOOTHING_RADIUS = 30; // In frames. The larger the more stable the video, but less reactive to sudden panning
@@ -55,6 +53,7 @@ int main(int argc,char *argv[])
     }
 
     VideoCapture cap(argv[1]);
+    VideoCapture cap(fileName);
     assert(cap.isOpened());
     cap.set(CV_CAP_PROP_FRAME_WIDTH,frame_width);
     cap.set(CV_CAP_PROP_FRAME_HEIGHT,frame_height);
@@ -132,6 +131,7 @@ int main(int argc,char *argv[])
         int count = 0;
 
         for(int j=-SMOOTHING_RADIUS; j <= SMOOTHING_RADIUS; j++) {
+        for(size_t j=-SMOOTHING_RADIUS; j <= SMOOTHING_RADIUS; j++) {
             if(i+j >= 0 && i+j < trajectory.size()) {
                 sum_x += trajectory[i+j].x;
                 sum_y += trajectory[i+j].y;
