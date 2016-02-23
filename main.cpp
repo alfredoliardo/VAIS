@@ -52,7 +52,6 @@ int main(int argc,char *argv[])
         return 0;
     }
 
-    VideoCapture cap(argv[1]);
     VideoCapture cap(fileName);
     assert(cap.isOpened());
     cap.set(CV_CAP_PROP_FRAME_WIDTH,frame_width);
@@ -130,7 +129,6 @@ int main(int argc,char *argv[])
         double sum_a = 0;
         int count = 0;
 
-        for(int j=-SMOOTHING_RADIUS; j <= SMOOTHING_RADIUS; j++) {
         for(size_t j=-SMOOTHING_RADIUS; j <= SMOOTHING_RADIUS; j++) {
             if(i+j >= 0 && i+j < trajectory.size()) {
                 sum_x += trajectory[i+j].x;
